@@ -1,0 +1,15 @@
+<div class="col-md-8 col-md-offset-2">
+    <div class="card">
+    <form (ngSubmit)="onSubmit(refLocalForm)" #refLocalForm="ngForm" ngNativeValidate>
+
+        <div class="wrap-input100 input-message" data-validate="Password is required">
+            <span class="label-input100">Mensagem</span>
+            <textarea rows="80" class="input100" type="text" id="content" [ngModel]="message?.content" name="myContent" required placeholder="Digite sua mensagem">
+            </textarea>
+        </div>
+        <div class="text-center m-t-30">
+            <button class="btn btn-primary btn-min-width">Salvar</button>
+            <button type="button" class="btn btn-outline-dark btn-min-width" (click)="onClear(refLocalForm)">Cancelar</button>
+        </div>
+    </form></div>
+</div>

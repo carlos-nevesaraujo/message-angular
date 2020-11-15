@@ -1,0 +1,28 @@
+<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
+    <form class="login100-form " [formGroup]="myForm" (ngSubmit)="onSubmit()">
+        <h1 class="title-page">Login</h1>
+
+        <div class="wrap-input100 validate-input m-b-23" data-validate="Username is reauired">
+            <span class="label-input100">Email</span>
+            <input class="input100" type="text" id="email" formControlName="emailInput" placeholder="Entre com o email">
+        </div>
+        <div class="wrap-input100 validate-input" data-validate="Password is required">
+            <span class="label-input100">Senha</span>
+            <input class="input100" type="password" id="password" formControlName="passwordInput"
+                placeholder="Digite sua senha">
+        </div>
+
+        <div class="div-btn-login ">
+                <button class="btn btn-primary btn-lg m-t-30" type="submit" [disabled]="!myForm.valid">
+                    Entrar
+                </button>
+
+                <a [routerLink]="['../signup']" class="btn btn-outline-dark btn-lg m-t-30"  >
+                    Cadastrar
+                </a>
+        </div>
+
+      
+
+    </form>
+</div>

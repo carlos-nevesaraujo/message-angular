@@ -1,0 +1,61 @@
+<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54 m-t-100">
+    <form class="login100-form " [formGroup]="myForm" (ngSubmit)="onSubmit()">
+        <h1 class="title-page">Cadastro</h1>
+
+        <div class="wrap-input100  m-b-23">
+            <span class="label-input100 ">Nome</span>
+            <input class="input100 " type="text " id="firstName " formControlName="firstNameInput" />
+        </div>
+        <div class="wrap-input100  m-b-23 ">
+            <span class="label-input100 ">Sobre nome</span>
+            <input class="input100 " type="text " id="lastName" formControlName="lastNameInput" />
+        </div>
+        <div class="wrap-input100  m-b-23 ">
+            <span class="label-input100 ">Sexo</span>
+
+            <div class="div-radio">
+                <label class="m-r-15">
+                <input type="radio" formControlName="sexoRadio" value="M">
+                MASCULINO
+              </label>
+                <label>
+                <input type="radio" formControlName="sexoRadio" value="F">
+                FEMININO
+              </label>
+            </div>
+        </div>
+        <div class="wrap-input100  m-b-23 ">
+            <span class="label-input100 ">Profissão</span>
+            <select class="input100  " formControlName="profissaoDropDown">
+                <option value="Estudante">Estudante</option>
+                <option value="Programador">Programador</option>
+                <option value="Empresário">Empresário</option>
+                <option value="Outros">Outros</option>
+            </select>
+        </div>
+        <div class="wrap-input100  m-b-23 ">
+            <span class="label-input100 ">Email</span>
+            <input class="input100 " id="email " type="email " formControlName="emailInput" />
+        </div>
+        <div class="wrap-input100  m-b-23 ">
+            <span class="label-input100 ">Senha</span>
+            <input class="input100 " id="password" type="password" formControlName="passwordInput" />
+        </div>
+
+        <div class="wrap-input100 m-t-10  m-b-23 " style="border-bottom: none;">
+            <label class="label-input100 ">
+            <input id="checkAceiteTermos" type="checkbox" formControlName="checkAceiteTermos" />
+            Aceito termos 
+            </label>
+        </div>
+        <div class="div-btn-login ">
+            <button class="btn btn-primary btn-lg m-t-30" type="submit" [disabled]="!myForm.valid">Cadastrar</button>
+        
+            <a [routerLink]="['../signin']" class="btn btn-outline-dark btn-lg m-t-30"  >
+                Voltar
+            </a>
+        
+        </div>
+        
+    </form>
+</div>
