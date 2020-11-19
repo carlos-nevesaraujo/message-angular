@@ -26,10 +26,10 @@ router.post('/', function(req, res, next) {
     })
 
 
-    message.save(function(err, messageResult) {
+    message.save(function(err, result) {
         if (err) {
             return res.status(500).json({
-                errorTitle: 'There was an error when saving message',
+                errorTitle: 'Erro ao salvar a mensagem',
                 error: err
             })
         }
