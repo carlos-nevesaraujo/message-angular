@@ -26,28 +26,26 @@ export class MessageInputComponent implements OnInit {
         if (this.message) {
             //Editar
             this.message.content = form.value.myContent
-            this.message.username = currentUser.firstName,
-            this.message.userId = currentUser.user_id,
+            this.message.user = currentUser.user_id,
             this.messageService
-                .updateMessage(this.message)
+                .updateMessage(this.message,currentUser)
                 .subscribe(
-                    successData => console.log(successData),
-                    errorData => console.log(errorData)
+                    successData => alert(successData.msg),
+                    errorData => alert(errorData.errorTitle)
                 )
             this.message = null
         } else {
             //Criar
             const message = new Message(
                 form.value.myContent,
-                currentUser.firstName,
                 null,
                 currentUser.user_id
             )
             this.messageService
-                .addMessage(message)
+                .addMessage(message,currentUser)
                 .subscribe(
-                    successData => console.log(successData),
-                    errorData => console.log(errorData)
+                    successData => alert(successData.msg),
+                    errorData => alert(errorData.errorTitle)
                 )
         }
         form.resetForm()

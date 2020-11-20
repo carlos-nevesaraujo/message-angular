@@ -6,7 +6,7 @@ import { Observable } from 'rxjs'
 
 @Injectable()
 export class MessageService {
-    private routePrefix : string = "http://localhost:3000/api/message/";
+    private routePrefix: string = "http://localhost:3000/api/message/";
 
     private messages: Message[] = []
 
@@ -14,14 +14,14 @@ export class MessageService {
 
     constructor(private http: Http) { }
 
-    addMessage(message: Message) {
+    addMessage(message: Message, user:any) {
         const body = JSON.stringify(message)
         const headers = new Headers({ 'Content-Type': 'application/json' })
         return (
             this.http.post(this.routePrefix, body, { headers })
                 .map((response: Response) => {
                     const responseJson = response.json()
-                    message.setId(responseJson.objResult._id);
+                    message.setId(responseJson.objResult._id,user);
                     this.messages.push(message)
 
                     return responseJson
@@ -36,9 +36,8 @@ export class MessageService {
                 .map((response: Response) => {
                     const jsonResponse = response.json()
                     const receivedMessages = jsonResponse.objResult
-                    const transformedMessages = receivedMessages.map(msg =>
-                        {
-                        return new Message(msg.content,msg.username, msg._id, msg.userId)
+                    const transformedMessages = receivedMessages.map(msg => {
+                        return new Message(msg.content,msg._id, msg.user)
                     })
                     this.messages = transformedMessages
 
@@ -52,22 +51,29 @@ export class MessageService {
         this.messageIsEdit.emit(message)
     }
 
-    updateMessage(message: Message) {
-        this.messages[this.messages.indexOf(message)].setData(message.content)
+    updateMessage(message: Message, user:any) {
+        console.log(message);
+
         const body = JSON.stringify(message)
         const headers = new Headers({ 'Content-Type': 'application/json' })
         return (
             this.http.patch(this.routePrefix + message.messageId, body, { headers })
-                .map((response: Response) => response.json())
+                .map((response: Response) => { 
+
+                    this.messages[this.messages.indexOf(message)].setData(message.content,user);
+
+                    return response.json()
+                })
                 .catch((error: Response) => Observable.throw(error.json()))
         )
     }
 
     deleteMessage(message: Message) {
+        console.log(message)
         this.messages.splice(this.messages.indexOf(message), 1);
         return (
             this.http.delete(this.routePrefix + message.messageId)
-                .map((response: Response) => response.json())
+                .map((response: Response) =>response.json())
                 .catch((error: Response) => Observable.throw(error.json()))
         )
     }

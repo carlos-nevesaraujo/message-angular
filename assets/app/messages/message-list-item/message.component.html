@@ -1,0 +1,14 @@
+<div class="panel panel-default m-t-10">
+    <div class="panel-heading">
+        <div class="author">
+            {{ message.user.firstName }}
+        </div>
+        <div class="btn-config">
+            <a (click)="onEdit()" class="btn-edit"><span class="fa fa-edit"></span> </a>
+            <a (click)="onDelete()" class="btn-delete"><span class="fa fa-trash"></span></a>
+        </div>
+    </div>
+    <div class="panel-body">
+        {{ message.content }}
+    </div>
+</div>

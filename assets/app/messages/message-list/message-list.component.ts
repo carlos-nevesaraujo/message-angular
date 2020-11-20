@@ -28,16 +28,5 @@ export class MessageListComponent implements OnInit {
     }
 
 
-    onEdit(message) {
-        this.messageService.setMessageToEdit(message)
-    }
-
-    onDelete(message) {
-      
-            this.messageService.deleteMessage(message).subscribe(
-                successData => console.log(successData),
-                errorData => console.log(errorData)
-            )
-        
-    }
+  
 }

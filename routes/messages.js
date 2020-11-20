@@ -4,7 +4,8 @@ var router = express.Router()
 var Message = require('../models/message')
 
 router.get('/', function(req, res, next) {
-    Message.find()
+
+    Message.find().populate('user')
         .exec(function(err, result) {
             if (err) {
                 return res.status(500).json({
@@ -21,8 +22,7 @@ router.get('/', function(req, res, next) {
 router.post('/', function(req, res, next) {
     var message = new Message({
         content: req.body.content,
-        userId: req.body.userId,
-        username: req.body.username
+        user: req.body.user,
     })
 
 
@@ -83,8 +83,7 @@ router.patch('/:id', function(req, res, next) {
         }
 
         result.content = req.body.content
-        result.username = req.body.username
-        result.userId = req.body.userId
+        result.user = req.body.user
         result.save(function(err, updateResult) {
             if (err) {
                 return res.status(500).json({

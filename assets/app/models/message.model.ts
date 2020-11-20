@@ -1,27 +1,25 @@
 export class Message {
     messageId: string
     content: string
-    userId: string
-    username: string
+    user: any
 
     constructor(
         content: string,
-        username: string,
         messageId: string = undefined,
-        userId: string = undefined) {
+        user: any = undefined) {
         this.content = content
-        this.username = username
         this.messageId = messageId
-        this.userId = userId
+        this.user = user
     }
 
-    setData(content: string, username: string = this.username) {
+    setData(content: string, user: any = this.user) {
         this.content = content
-        this.username = username
+        this.user = user
     }
 
-    setId(messageId:string)
+    setId(messageId:string, user:any)
     {
+        this.user = user;
         this.messageId= messageId;
     }
 }

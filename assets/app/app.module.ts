@@ -5,6 +5,7 @@ import { AppComponent } from "./app.component"
 import { MessageListComponent } from "./messages/message-list/message-list.component"
 import { FormsModule, ReactiveFormsModule } from "@angular/forms"
 import { MessageInputComponent } from './messages/message-input/message-input-component'
+import { MessageComponent } from './messages/message-list-item/message.component'
 import { MessagesComponent } from './messages/messages.component'
 import { AuthenticationComponent } from './auth/authentication/authentication.component'
 import { HeaderComponent } from './header/header.component'
@@ -19,6 +20,7 @@ import { HttpModule } from '@angular/http'
         MessageListComponent,
         MessageInputComponent,
         MessagesComponent,
+        MessageComponent,
         AuthenticationComponent,
         HeaderComponent,
         SigninComponent,
