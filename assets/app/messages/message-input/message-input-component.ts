@@ -30,7 +30,7 @@ export class MessageInputComponent implements OnInit {
             this.messageService
                 .updateMessage(this.message,currentUser)
                 .subscribe(
-                    successData => alert(successData.msg),
+                    successData => console.log(successData),
                     errorData => alert(errorData.errorTitle)
                 )
             this.message = null
@@ -44,7 +44,7 @@ export class MessageInputComponent implements OnInit {
             this.messageService
                 .addMessage(message,currentUser)
                 .subscribe(
-                    successData => alert(successData.msg),
+                    successData =>  console.log(successData),
                     errorData => alert(errorData.errorTitle)
                 )
         }

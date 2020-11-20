@@ -1,2 +1,7 @@
-<app-message [message]="message" *ngFor="let message of messages">
-</app-message>
+<div class="timeline">
+    <div [ngClass]="(messages.indexOf(message) % 2 ==0)?'left':'right'" class="container-timeline "
+        *ngFor="let message of messages">
+        <app-message [message]="message">
+        </app-message>
+    </div>
+</div>

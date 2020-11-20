@@ -1,5 +1,5 @@
-<div class="panel panel-default m-t-10">
-    <div class="panel-heading">
+<div class="content">
+    <div class="timeline-header">
         <div class="author">
             {{ message.user.firstName }}
         </div>
@@ -8,7 +8,8 @@
             <a (click)="onDelete()" class="btn-delete"><span class="fa fa-trash"></span></a>
         </div>
     </div>
-    <div class="panel-body">
+    <div class="timeline-message">
         {{ message.content }}
     </div>
+
 </div>

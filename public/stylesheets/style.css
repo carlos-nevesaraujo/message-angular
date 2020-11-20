@@ -443,7 +443,6 @@ iframe {
     }
 }
 
-
 .login100-social-item {
     font-size: 25px;
     color: #fff;
@@ -498,7 +497,6 @@ iframe {
 .btn-save {
     border: 1px solid #337ab7;
     color: #337ab7;
-    
 }
 
 .btn-save:hover {
@@ -517,21 +515,23 @@ iframe {
 }
 
 .btn-config {
-    float: right;
+    position: absolute;
+    right: 6px;
+    top: 9px;
 }
 
 .btn-edit, .btn-delete {
-    padding: 10px;
+    padding: 5px;
     cursor: pointer;
 }
 
-.btn-delete:hover
-{
-    color:#dc3545
+.btn-delete:hover {
+    color: #dc3545
 }
 
 .author {
     display: inline-block;
+    font-weight: bold;
 }
 
 .div-radio {
@@ -546,23 +546,19 @@ select.input100 {
     margin-top: 10px;
 }
 
-
-.login100-form .title-page
-{
+.login100-form .title-page {
     margin-bottom: 30px;
     border-bottom: 1px solid;
     padding-bottom: 50px;
     text-align: center;
 }
 
-
-.card
-{
+.card {
     padding: 24px;
     background: #fff;
 }
 
-.table{
+.table {
     width: 100%;
     margin-bottom: 1rem;
     background-color: transparent;
@@ -579,6 +575,7 @@ select.input100 {
     vertical-align: top;
     border-top: 1px solid #dee2e6;
 }
+
 /*//////////////////////////////////////////////////////////////////
 [ Responsive ]*/
 
@@ -586,5 +583,157 @@ select.input100 {
     .wrap-login100 {
         padding-left: 15px;
         padding-right: 15px;
+    }
+}
+
+/* Timeline  */
+
+/* The actual timeline (the vertical ruler) */
+
+.timeline {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-top: 40px;
+}
+
+/* The actual timeline (the vertical ruler) */
+
+.timeline::after {
+    content: '';
+    position: absolute;
+    width: 6px;
+    background-color: white;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -3px;
+}
+
+/* Container around content */
+
+.container-timeline {
+    padding: 10px 40px;
+    position: relative;
+    background-color: inherit;
+    width: 50%;
+    margin-top: -14px;
+}
+
+.container-timeline:hover .content {
+    background: #337ab759;
+}
+
+.container-timeline.left:hover::before {
+    border-left-color: #337ab759;
+}
+
+.container-timeline.right:hover::before {
+    border-right-color: #337ab759;
+}
+
+/* The circles on the timeline */
+
+.container-timeline::after {
+    content: '';
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    right: -13px;
+    background-color: white;
+    border: 4px solid #337ab7;
+    top: 15px;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.container-timeline:hover::after {
+    background-color: #337ab71c;
+}
+
+/* Place the container to the left */
+
+.left {
+    left: 0;
+}
+
+/* Place the container to the right */
+
+.right {
+    left: 50%;
+}
+
+/* Add arrows to the left container (pointing right) */
+
+.left::before {
+    content: " ";
+    height: 0;
+    position: absolute;
+    top: 22px;
+    width: 0;
+    z-index: 1;
+    right: 30px;
+    border: medium solid white;
+    border-width: 10px 0 10px 10px;
+    border-color: transparent transparent transparent white;
+}
+
+/* Add arrows to the right container (pointing left) */
+
+.right::before {
+    content: " ";
+    height: 0;
+    position: absolute;
+    top: 22px;
+    width: 0;
+    z-index: 1;
+    left: 30px;
+    border: medium solid white;
+    border-width: 10px 10px 10px 0;
+    border-color: transparent white transparent transparent;
+}
+
+/* Fix the circle for containers on the right side */
+
+.right::after {
+    left: -13px;
+}
+
+/* The actual content */
+
+.content {
+    padding: 20px 30px;
+    background-color: white;
+    position: relative;
+    border-radius: 6px;
+}
+
+/* Media queries - Responsive timeline on screens less than 600px wide */
+
+@media screen and (max-width: 600px) {
+    /* Place the timelime to the left */
+    .timeline::after {
+        left: 31px;
+    }
+    /* Full-width containers */
+    .container-timeline {
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 25px;
+    }
+    /* Make sure that all arrows are pointing leftwards */
+    .container-timeline::before {
+        left: 60px;
+        border: medium solid white;
+        border-width: 10px 10px 10px 0;
+        border-color: transparent white transparent transparent;
+    }
+    /* Make sure all circles are at the same spot */
+    .left::after, .right::after {
+        left: 15px;
+    }
+    /* Make all right containers behave like the left ones */
+    .right {
+        left: 0%;
     }
 }

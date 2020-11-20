@@ -40,7 +40,6 @@ export class MessageService {
                         return new Message(msg.content,msg._id, msg.user)
                     })
                     this.messages = transformedMessages
-
                     return this.messages
                 })
                 .catch((error: Response) => Observable.throw(error.json()))
